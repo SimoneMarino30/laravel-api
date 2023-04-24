@@ -1,0 +1,41 @@
+@import "~bootstrap/scss/bootstrap";
+
+#show_card {
+    // border: 3px dashed darkcyan;
+    width: 22rem;
+    height: 25rem;
+    border-radius: 30px;
+    margin-top: 7rem;
+}
+
+.card {
+    padding: 1rem;
+    margin: .8rem;
+}
+
+.debug {
+    border: 3px dashed greenyellow;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.btn-trash {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+// views.types.index pallini
+
+.color_preview {
+    width: 25px;
+    height: 25px;
+}
