@@ -16,8 +16,8 @@ use App\Http\Controllers\Api\ProjectController as ApiProjectController;
 |
 */
 
-Route::get('/test', function() {
-    return 'ciao!';
-});
+// Route::get('/test', function() {
+//     return 'ciao!';
+// });
 
-Route::resources('Projects', ApiProjectController::class);
+Route::ApiResource('projects', ApiProjectController::class);
