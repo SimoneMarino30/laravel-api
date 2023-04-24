@@ -12,8 +12,8 @@ class Project extends Model
 
     protected $fillable = ["title", "link", "date", "description", 'type_id'];
 
-    // !ASPETTANDO CHE FUNZIONI IL WITH DELLA API INDEX
-    protected $with = ['technologies', 'type'];
+    // EAGER LOADING X QUERY APICONTROLLER (SOSTITUISCE IL WITH)
+    // protected $with = ['technologies', 'type'];
 
     // # Mutator date
     protected function getDateAttribute($value) {

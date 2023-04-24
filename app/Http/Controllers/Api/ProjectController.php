@@ -17,10 +17,22 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::query()
+        ->with('technologies', 'type')
+        ->paginate(8);
+
         // ! IL METODO WITH NON FUNZIONA
-        // ->with('technologies', 'type');
+        // ->with('technologies', 'type')
+      
+        
+        // IMG STORAGE
+         foreach($projects as $project) {
+            if($project->link) $project->link = url('storage/' . $project->link);
+        }
+        
         return response()->json($projects);
+
+       
     }
 
     /**
