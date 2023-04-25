@@ -119,6 +119,7 @@ class ProjectController extends Controller
         $data = $this->validation($request->all());
 
             if(Arr::exists($data, 'link')) {
+                if($project->link) Storage::delete($project->link);
             $path = Storage::put('uploads/projects', $data['link']);
             $data['link'] = $path;
         }
@@ -143,7 +144,8 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)
-    {
+    {   
+        if($project->link) Storage::delete($project->link);
         $project->delete();
         return redirect()->route('admin.projects.index');
     }

@@ -51,7 +51,7 @@
     
     <label for="technologies" class="form-label">Tech</label>
    
-    <div class="form-check col-12" style="border: 2px dashed yellowgreen">
+    <div class="form-check col-12">
       @foreach ($technologies as $technology)
       <input type="checkbox" id="technology{{ $technology->id }}" value="{{ $technology->id }}" name="technologies[]" 
       class="form-check-control @error('technologies') is-invalid @enderror p-0 " 
@@ -85,20 +85,13 @@
     {{ $message }}
   </div>
   @enderror
-
-  
 </div>
 
-{{-- MUTATOR VERSION FOR WHEN IS WORKING --}}
-{{-- <div class="col-2">
-  <img src="{{ $project->link }}" alt="" class="img-fluid">
-</div> --}}
+  {{-- LINK --}}
 
   <div class="col-6 mt-5">
-    <img src="{{ $project->link ? asset('storage/' . $project->link) : 'https://www.frosinonecalcio.com/wp-content/uploads/bfi_thumb/default-placeholder-38gbdutk2nbrubtodg93tqlizprlhjpd1i4m8gzrsct8ss250.png' }}" alt="" class="img-fluid">
-    {{-- LINK --}}
-
-  <label for="link" class="form-label">Link</label>
+    <img src="{{ $project->getImageUri() }}" alt="" class="img-fluid mb-2" id="link-preview">
+  {{-- <label for="link" class="form-label">Link</label> --}}
   <input type="file" class="form-control @error('link') is-invalid @enderror" id="link" name="link"  value="{{ old('link') }}">
   @error('link')
   <div class="invalid-feedback">
@@ -107,6 +100,7 @@
   @enderror
   </div>
 <div class="col-12">
+
   {{-- DESCRIPTION --}}
 
   <label for="description" class="form-label">Description</label>
@@ -123,4 +117,24 @@
   <button type="submit" class="btn btn-outline-success ms-auto">Save</button>
 </div>
 </form>
+@endsection
+
+@section('scripts')
+<script>
+  
+  const linkInputEl = document.getElementById('link');
+  const linkPreviewEl = document.getElementById('link-preview');
+  const placeholder = linkPreviewEl.src;
+
+  linkInputEl.addEventListener('change', () =>{
+    if(linkInputEl.files && linkInputEl.files[0]) {
+      const reader = new FileReader();
+      reader.readAsDataURL(linkInputEl.files[0]);
+
+      reader.onload = e => {
+        linkPreviewEl.src = e.target.result;
+      }
+    }
+  })
+</script>
 @endsection

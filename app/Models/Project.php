@@ -12,28 +12,28 @@ class Project extends Model
 
     protected $fillable = ["title", "link", "date", "description", 'type_id'];
 
-    // EAGER LOADING X QUERY APICONTROLLER (SOSTITUISCE IL WITH)
+    // ! EAGER LOADING X QUERY APICONTROLLER (SOSTITUISCE IL WITH)
     // protected $with = ['technologies', 'type'];
+    
+    // * Getter immagini
+    public function getImageUri() {
+        return $this->link ? url('storage/' . $this->link) : 'https://www.frosinonecalcio.com/wp-content/uploads/bfi_thumb/default-placeholder-38gbdutk2nbrubtodg93tqlizprlhjpd1i4m8gzrsct8ss250.png';
+    }
 
-    // # Mutator date
+    // * Mutator date
+
     protected function getDateAttribute($value) {
         return date('d/m/Y', strtotime($value));
     }
 
-    // # Mutator img (not working)
 
-    // protected function getImageAttribute($value) {
-    //     return $value ? asset('storage/' . $value) : 'https://www.frosinonecalcio.com/wp-content/uploads/bfi_thumb/default-placeholder-38gbdutk2nbrubtodg93tqlizprlhjpd1i4m8gzrsct8ss250.png';
-       
-    // }
-
-    // # Relations method one to many
+    // * Relations method one to many
 
     public function type() {
         return $this->belongsTo(Type::class);
     }
         
-    // # Relations method many to many
+    // * Relations method many to many
     
     public function technologies() {
         return $this->belongsToMany(Technology::class);

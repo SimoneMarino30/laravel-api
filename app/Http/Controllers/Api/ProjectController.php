@@ -20,14 +20,10 @@ class ProjectController extends Controller
         $projects = Project::query()
         ->with('technologies', 'type')
         ->paginate(8);
-
-        // ! IL METODO WITH NON FUNZIONA
-        // ->with('technologies', 'type')
-      
         
         // IMG STORAGE
          foreach($projects as $project) {
-            if($project->link) $project->link = url('storage/' . $project->link);
+            if($project->link) $project->link = $project->getImageUri();
         }
         
         return response()->json($projects);
