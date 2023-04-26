@@ -18,12 +18,13 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::query()
+        // JOIN
         ->with('technologies', 'type')
         ->paginate(8);
         
         // IMG STORAGE
          foreach($projects as $project) {
-            if($project->link) $project->link = $project->getImageUri();
+           $project->link = $project->getImageUri();
         }
         
         return response()->json($projects);

@@ -8,7 +8,7 @@
     <div class="card-box">
       <div class="card" style="width: 18rem;">
         <figure>
-          <img src="{{ $project->link ? asset('storage/' . $project->link) : 'https://www.frosinonecalcio.com/wp-content/uploads/bfi_thumb/default-placeholder-38gbdutk2nbrubtodg93tqlizprlhjpd1i4m8gzrsct8ss250.png' }}" alt="" class="img-fluid">
+          <img src="{{ $project->link ? url('storage/' . $project->link) : 'https://www.frosinonecalcio.com/wp-content/uploads/bfi_thumb/default-placeholder-38gbdutk2nbrubtodg93tqlizprlhjpd1i4m8gzrsct8ss250.png' }}" alt="" class="img-fluid">
           <figcaption>{{ $project->date }}</figcaption>
         </figure>
         <div class="card-body">

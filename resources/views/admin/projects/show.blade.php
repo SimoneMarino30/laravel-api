@@ -3,7 +3,7 @@
 @section('title', $project->title)
 
 @section('content')
-  {{-- @dump($project) --}}
+{{-- @dump($project) --}}
 <section class="card clearfix">
   <div class="card-body">
     <figure class="float-end ms-5 mb-3">
