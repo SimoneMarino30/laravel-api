@@ -22,9 +22,9 @@ Buon lavoro e buon divertimento!
 26/4
 
 **Lato Laravel assicuratevi di:**
-- Aver aggiunto la funzione show all'Api\ProjectController
-- Aver recuperato le informazioni aggiuntive col il metodo with di Eloquent
-- Aver testato con postman il corretto funzionamento della API
+- Aver aggiunto la funzione show all'Api\ProjectController ✔
+- Aver recuperato le informazioni aggiuntive col il metodo with di Eloquent ✔
+- Aver testato con postman il corretto funzionamento della API ✔
 
 **Lato Vue assicuratevi di:**
 - Aver installato Vue Router: npm install vue-router@4 ✔
