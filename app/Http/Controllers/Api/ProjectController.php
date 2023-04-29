@@ -51,9 +51,14 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project =Project::where('id', $id)->with('type', 'technologies')->get();
+        $project = Project::where('id', $id)->with('type', 'technologies')->first(); 
+        // ->first() = questo metodo restituisce il primo oggetto nella collection sotto forma di un singolo oggetto
         if(!$project) return response(null, 404);
-        return response()->json(['working']);
+
+        $project->link = $project->getImageUri();
+        // dd($project);
+        return response()->json($project);
+        
     }
 
 
