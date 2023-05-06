@@ -17,7 +17,7 @@ class Project extends Model
     
     // * Getter immagini
     public function getImageUri() {
-        return $this->link ? url('storage/' . $this->link) : 'https://www.frosinonecalcio.com/wp-content/uploads/bfi_thumb/default-placeholder-38gbdutk2nbrubtodg93tqlizprlhjpd1i4m8gzrsct8ss250.png';
+        return $this->link ? url('storage/' . $this->link) : 'http://127.0.0.1:8000/storage/uploads/projects/upPAzFeKw1Pq3FFGwntXOmZhFzGznUq7baQxf6Zz.jpg';
     }
 
     // * Mutator date
